@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جلسه هشتم: مبانی علمی تمرکز | کلاس مدیریت زمان دکتر امیر میرهلی</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;800&display=swap');
+
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1d1d1d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-gold: #D4AF37;
+            --accent-gold-transparent: rgba(212, 175, 55, 0.1);
+            --accent-gold-border: rgba(212, 175, 55, 0.2);
+            --accent-red: #ff4d4d;
+            --accent-blue: #4d94ff;
+            --border-color: #334155;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 2.1;
+            background-image: 
+                linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%);
+            background-size: 20px 20px;
+        }
+
+        .container { max-width: 900px; width: 100%; }
+
+        .focus-card {
+            background-color: var(--bg-card);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid var(--accent-gold-border);
+            box-shadow: 0 0 30px var(--accent-gold-transparent), 0 0 60px rgba(212, 175, 55, 0.08);
+        }
+
+        .header { text-align: center; margin-bottom: 40px; }
+        .main-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(45deg, #D4AF37, #F0E68C, #D4AF37);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--accent-gold);
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin: 50px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--accent-gold-border);
+        }
+
+        p { font-weight: 300; font-size: 1.1rem; color: var(--text-secondary); }
+        p strong { color: var(--accent-gold); font-weight: 700; }
+        .explanation-box { background-color: rgba(255,255,255,0.03); padding: 20px; border-radius: 8px; margin-top: 15px; border-right: 3px solid var(--accent-gold); }
+
+        .styled-table { width: 100%; border-collapse: collapse; margin-top: 30px; font-size: 1rem; }
+        .styled-table thead tr { color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); }
+        .styled-table th, .styled-table td { padding: 15px; text-align: right; }
+        .styled-table tbody tr { border-bottom: 1px solid var(--border-color); }
+        .styled-table tbody tr:nth-of-type(even) { background-color: rgba(255, 255, 255, 0.02); }
+        .styled-table td:first-child { font-weight: 700; color: var(--text-primary); }
+
+        .diagram-container { background-color: rgba(0,0,0,0.2); border-radius: 10px; margin-top: 30px; border: 1px solid var(--border-color); padding: 20px; overflow: hidden; }
+        .diagram-caption { font-size: 0.9rem; text-align: center; margin-top: 15px; color: var(--text-secondary); }
+
+        .button-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .action-button { background: var(--accent-gold); color: black; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'Vazirmatn', sans-serif; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+        .action-button:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2); }
+        .action-button.active { background: var(--accent-blue); color: white; box-shadow: 0 0 15px rgba(77, 148, 255, 0.3); }
+        
+        /* Animation 1: Brain Battle */
+        .brain-diagram { position: relative; height: 250px; }
+        .brain-part { position: absolute; padding: 10px 15px; border-radius: 8px; font-weight: 700; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s ease; }
+        .pfc { top: 20px; right: 20px; background-color: var(--accent-blue); color: white; }
+        .thalamus { top: 50%; right: 50%; transform: translate(50%, -50%); background-color: white; color: black; border: 2px solid var(--accent-gold); z-index: 10; }
+        .thalamus.breached { background-color: var(--accent-red); color: white; border-color: var(--accent-red); }
+        .amygdala { bottom: 20px; right: 20px; background-color: var(--accent-red); color: white; }
+        .stimulus { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 80px; padding: 5px; background-color: var(--accent-gold); color: black; border-radius: 5px; font-size: 0.9rem; z-index: 5; }
+        .signal { position: absolute; width: 10px; height: 10px; border-radius: 50%; opacity: 0; }
+        .pfc-command { top: 60px; right: 90px; background-color: var(--accent-blue); }
+        .amygdala-threat { bottom: 60px; right: 90px; background-color: var(--accent-red); }
+
+        /* Focused state animations */
+        .focused-mode .pfc-command { animation: pfc-win 8s infinite ease-in-out 3s; }
+        .focused-mode .amygdala-threat { animation: amygdala-lose 8s infinite ease-in-out 1.5s; }
+        .focused-mode .stimulus { animation: stimulus-blocked 8s infinite ease-in-out; }
+        @keyframes pfc-win { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 40%{opacity:1;transform:translate(-180px,50px)} 41%,100%{opacity:0} }
+        @keyframes amygdala-lose { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 20%{opacity:0;transform:translate(-90px,-55px)} 21%,100%{opacity:0} }
+        @keyframes stimulus-blocked { 0%,100%{left:20px;opacity:0} 10%{opacity:1} 40%{left:calc(50% - 120px);opacity:1} 90%{left:calc(50% - 120px);opacity:1} 95%{opacity:0} }
+
+        /* Distracted state animations */
+        .distracted-mode .pfc-command { animation: pfc-lose 8s infinite ease-in-out 3s; }
+        .distracted-mode .amygdala-threat { animation: amygdala-win 8s infinite ease-in-out 1.5s; }
+        .distracted-mode .stimulus { animation: stimulus-passed 8s infinite ease-in-out; }
+        @keyframes pfc-lose { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 20%{opacity:0;transform:translate(-90px,25px)} 21%,100%{opacity:0} }
+        @keyframes amygdala-win { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 30%{opacity:1;transform:translate(-180px,-110px)} 31%,100%{opacity:0} }
+        @keyframes stimulus-passed { 0%,100%{left:20px;opacity:0} 10%{opacity:1} 40%{left:calc(50% - 120px);opacity:1} 60%{left:calc(50% + 50px);opacity:1} 80%{left:calc(50% + 50px);opacity:0} 95%{opacity:0} }
+
+        /* Animation 2: Neuroplasticity */
+        .neuro-diagram { position: relative; height: 150px; display: flex; align-items: center; justify-content: space-between; }
+        .neuro-path { position: absolute; right: 80px; left: 80px; height: 2px; background-color: var(--accent-gold-border); transition: all 0.5s ease; }
+        .neuro-path.strong { height: 10px; background-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold-transparent); }
+        .neuro-point { width: 50px; height: 50px; background-color: var(--bg-main); border: 2px solid var(--accent-gold); border-radius: 50%; display: grid; place-items: center; font-weight: 700; z-index: 5; }
+        .neuro-signal { position: absolute; right: 50px; width: 15px; height: 15px; background: var(--accent-blue); border-radius: 50%; z-index: 6; opacity: 0; }
+        .neuro-signal.animate { animation: travel-path 4s ease-in-out; }
+        .neuro-signal.animate.fast { animation-duration: 1.5s; }
+        @keyframes travel-path { 0% { right: 50px; opacity: 1; } 100% { right: calc(100% - 65px); opacity: 1; } }
+        .reset-button { background: transparent; border: 1px solid var(--text-secondary); color: var(--text-secondary); }
+        .reset-button:hover { background: var(--text-secondary); color: var(--bg-card); box-shadow: none; }
+
+        /* Animation 3: Spotlight */
+        .spotlight-diagram { height: 200px; position: relative; display: grid; place-items: center; }
+        .spotlight-text { font-size: 1.5rem; color: #444; user-select: none; text-align: center; }
+        .spotlight-mask { position: absolute; inset: 0; background: var(--bg-card); transition: all 0.8s ease-in-out; }
+        .spotlight-mask.focused { mask-image: radial-gradient(circle at center, transparent 80px, black 120px); animation: none; }
+        .spotlight-mask.distracted { animation: wander 6s infinite alternate ease-in-out; mask-image: radial-gradient(circle at center, transparent 150px, black 200px); }
+        @keyframes wander { 0% { mask-position: 20% 20%; } 25% { mask-position: 80% 50%; } 50% { mask-position: 40% 80%; } 75% { mask-position: 70% 30%; } 100% { mask-position: 20% 20%; } }
+        
+        @media (max-width: 768px) {
+            body { padding: 20px 10px; }
+            .focus-card { padding: 25px; }
+            .main-title { font-size: 2.2rem; }
+            .subtitle { font-size: 1rem; }
+            .section-title { font-size: 1.5rem; }
+            .brain-diagram { height: 300px; }
+            .button-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="focus-card">
+            <header class="header">
+                <h1 class="main-title">کالبدشکافی تمرکز</h1>
+                <h2 class="subtitle">جلسه هشتم | کلاس مدیریت زمان دکتر امیر میرهلی</h2>
+            </header>
+            
+            <p>در جلسات گذشته، ما هنر «مدیریت زمان» را آموختیم. اما بهترین نقشه دنیا بدون یک «موتور قدرتمند» برای حرکت، بی‌فایده است. **تمرکز، موتور محرک بهره‌وری شماست.** اگر زمان، «ظرف» کارهاست، تمرکز، «کیفیت» محتوای درون آن ظرف است. امروز، ما عمیق‌تر از همیشه کاپوت مغز را بالا می‌زنیم تا با مهندسی این موتور شگفت‌انگیز آشنا شویم.</p>
+
+            <h2 class="section-title">انیمیشن ۱: مقایسه دو ذهن در نبرد روزانه</h2>
+            <p>هر لحظه، در مغز شما یک نبرد برای به دست آوردن منبع ارزشمندی به نام «توجه» در جریان است. این نبرد عمدتاً بین دو بخش کلیدی است: مدیرعامل منطقی (PFC) و سیستم هشدار هیجانی (آمیگدال). در انیمیشن زیر، می‌توانید نتیجه این نبرد را در دو نوع ذهن مشاهده کنید.</p>
+            <div class="diagram-container">
+                <div class="brain-diagram" id="brainDiagram">
+                    <div class="brain-part pfc">مدیرعامل (PFC)</div>
+                    <div class="brain-part thalamus" id="thalamus">نگهبان (تالاموس)</div>
+                    <div class="brain-part amygdala">سیستم هشدار (آمیگدال)</div>
+                    <div class="stimulus" id="stimulus">نوتیفیکیشن!</div>
+                    <div class="signal pfc-command" id="pfcSignal"></div>
+                    <div class="signal amygdala-threat" id="amygdalaSignal"></div>
+                </div>
+                <div class="button-container">
+                    <button class="action-button active" id="btnFocused" onclick="setBrainMode('focused')">ذهن متمرکز (PFC پیروز)</button>
+                    <button class="action-button" id="btnDistracted" onclick="setBrainMode('distracted')">ذهن حواس‌پرت (آمیگدال پیروز)</button>
+                </div>
+            </div>
+            <div class="explanation-box">
+                <p><strong>تحلیل علمی «ذهن متمرکز»:</strong> این حالت، نمونه‌ای از **کنترل از بالا به پایین (Top-Down Control)** است. مدیرعامل (PFC) با مصرف انرژی (گلوکز و اکسیژن)، یک فرمان بازدارنده قوی به نگهبان (تالاموس) ارسال می‌کند و به او دستور می‌دهد که سیگنال‌های هیجانی و نامربوط از طرف آمیگدال را نادیده بگیرد. این یک فرآیند فعال و ارادی است و به همین دلیل است که تمرکز عمیق، خسته‌کننده است. شما در حال سرکوب فعالانه حواس‌پرتی‌ها هستید.</p>
+                <p><strong>تحلیل علمی «ذهن حواس‌پرت»:</strong> این حالت، نمونه‌ای از **کنترل از پایین به بالا (Bottom-Up Control)** است. در اینجا، یا مدیرعامل خسته است یا حواس‌پرتی بسیار جذاب است. آمیگدال با ارسال یک سیگنال هیجانی قوی (که اغلب با ترشح دوپامین برای تازگی یا کورتیزول برای اضطرار همراه است)، فرمان مدیرعامل را وتو می‌کند. نگهبان (تالاموس) تسخیر شده و دروازه را برای ورود حواس‌پرتی باز می‌کند. این فرآیند سریع و غیرارادی است و به همین دلیل مقاومت در برابر آن دشوار است.</p>
+            </div>
+
+            <h2 class="section-title">انیمیشن ۲: ساختن بزرگراه تمرکز (نوروپلاستیسیتی)</h2>
+            <p>خبر فوق‌العاده این است که قدرت مدیرعامل شما و توانایی او برای پیروزی در نبرد بالا، یک ویژگی ثابت نیست. مغز شما بر اساس قانون شگفت‌انگیز **نوروپلاستیسیتی (Neuroplasticity)** عمل می‌کند. این قانون را می‌توان در یک جمله معروف خلاصه کرد: **«نورون‌هایی که با هم شلیک می‌کنند، به هم متصل می‌شوند»**. هر بار که آگاهانه تصمیم می‌گیرید یک حواس‌پرتی را نادیده بگیرید، در حال ساختن و تقویت فیزیکی یک مسیر عصبی هستید.</p>
+            <div class="diagram-container">
+                <div class="neuro-diagram">
+                    <div class="neuro-point">A</div>
+                    <div class="neuro-path" id="neuroPath"></div>
+                    <div class="neuro-signal" id="neuroSignal"></div>
+                    <div class="neuro-point">B</div>
+                </div>
+                <div class="button-container">
+                    <button class="action-button" id="practiceButton">یک بار تمرین تمرکز</button>
+                    <button class="action-button reset-button" id="resetButton">شروع مجدد</button>
+                </div>
+            </div>
+            <div class="explanation-box">
+                <p><strong>تحلیل علمی فرآیند:</strong> در ابتدا، مسیر عصبی برای تمرکز، یک «جاده خاکی» ضعیف است. با هر بار «تمرین تمرکز»، تغییرات فیزیکی واقعی رخ می‌دهد: ۱. **افزایش غلاف میلین:** یک لایه چربی که مانند روکش پلاستیکی سیم، دور آکسون نورون‌ها را می‌پوشاند و سرعت انتقال سیگنال را به شدت افزایش می‌دهد. این همان «آسفالت کردن» جاده است. ۲. **افزایش گیرنده‌های عصبی:** نورون مقصد (B) گیرنده‌های بیشتری برای دریافت سیگنال از نورون مبدأ (A) می‌سازد. این باعث می‌شود ارتباط قوی‌تر و قابل اعتمادتر شود. بنابراین، تمرکز کردن در آینده، انرژی کمتری از شما خواهد گرفت.</p>
+            </div>
+
+            <h2 class="section-title">انیمیشن ۳: تمرکز به مثابه نورافکن</h2>
+            <p>راه دیگر برای فهم تمرکز، تشبیه آن به یک **نورافکن (Spotlight)** است که شما کنترل آن را در دست دارید. کیفیت یادگیری شما به نحوه استفاده از این نورافکن بستگی دارد.</p>
+            <div class="diagram-container">
+                <div class="spotlight-diagram">
+                    <p class="spotlight-text">یادگیری عمیق نیازمند توجه کامل و حذف آگاهانه تمام عوامل حواس‌پرتی‌های محیطی و ذهنی است تا بتوان به اوج عملکرد شناختی دست یافت</p>
+                    <div class="spotlight-mask focused" id="spotlightMask"></div>
+                </div>
+                <div class="button-container">
+                    <button class="action-button" id="btnSpotlightFocused" onclick="setFocusMode('focused')">حالت تمرکز عمیق</button>
+                    <button class="action-button" id="btnSpotlightDistracted" onclick="setFocusMode('distracted')">حالت حواس‌پرتی</button>
+                </div>
+            </div>
+            <div class="explanation-box">
+                <p><strong>تحلیل علمی نورافکن:</strong> این تمثیل، مستقیماً به عملکرد PFC و آمیگدال مربوط است.
+                <br>• <strong>نورافکن دقیق:</strong> در این حالت، **PFC (مدیرعامل)** کنترل کامل را در دست دارد. او آگاهانه تصمیم می‌گیرد که تمام منابع شناختی را روی یک نقطه متمرکز کند. این کار، **بار شناختی (Cognitive Load)** را کاهش می‌دهد، زیرا مغز فقط یک مجموعه اطلاعات را پردازش می‌کند و در نتیجه، یادگیری عمیق و کارآمد رخ می‌دهد.
+                <br>• <strong>نورافکن سرگردان:</strong> این حالت زمانی رخ می‌دهد که **PFC خسته است (پدیده خستگی تصمیم)** یا **آمیگدال (سیستم هشدار)** کنترل را به دست گرفته. توجه بین چندین محرک تقسیم می‌شود که باعث افزایش شدید بار شناختی می‌گردد. مغز در این حالت، انرژی زیادی مصرف می‌کند اما چون هیچ اطلاعاتی را عمیقاً پردازش نمی‌کند، خروجی مفیدی ندارد. این همان حس «تمام روز مشغول بودم ولی هیچ کاری نکردم» است.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation 1: Brain Battle
+        const brainDiagram = document.getElementById('brainDiagram');
+        const thalamus = document.getElementById('thalamus');
+        const btnFocused = document.getElementById('btnFocused');
+        const btnDistracted = document.getElementById('btnDistracted');
+
+        function setBrainMode(mode) {
+            if (mode === 'focused') {
+                brainDiagram.classList.remove('distracted-mode');
+                brainDiagram.classList.add('focused-mode');
+                thalamus.classList.remove('breached');
+                btnFocused.classList.add('active');
+                btnDistracted.classList.remove('active');
+            } else {
+                brainDiagram.classList.remove('focused-mode');
+                brainDiagram.classList.add('distracted-mode');
+                // Add a delay to sync with animation
+                setTimeout(() => { thalamus.classList.add('breached'); }, 2400); // 8s * 0.3
+                btnDistracted.classList.add('active');
+                btnFocused.classList.remove('active');
+            }
+        }
+        // Initial state for animation 1
+        setBrainMode('focused');
+
+        // Animation 2: Neuroplasticity
+        const practiceButton = document.getElementById('practiceButton');
+        const resetButton = document.getElementById('resetButton');
+        const neuroPath = document.getElementById('neuroPath');
+        const neuroSignal = document.getElementById('neuroSignal');
+        let practiceCount = 0;
+
+        function resetNeuroAnimation() {
+            practiceCount = 0;
+            neuroPath.classList.remove('strong');
+            neuroSignal.classList.remove('animate', 'fast');
+            practiceButton.textContent = "یک بار تمرین تمرکز";
+            practiceButton.disabled = false;
+        }
+
+        practiceButton.addEventListener('click', () => {
+            if (practiceCount >= 3) return;
+            practiceCount++;
+            neuroSignal.classList.remove('animate', 'fast');
+            void neuroSignal.offsetWidth; // Trigger reflow
+            if (practiceCount >= 3) {
+                neuroPath.classList.add('strong');
+                neuroSignal.classList.add('animate', 'fast');
+                practiceButton.textContent = "بزرگراه ساخته شد!";
+                practiceButton.disabled = true;
+            } else {
+                neuroSignal.classList.add('animate');
+                practiceButton.textContent = `تمرین ${practiceCount + 1} | دوباره کلیک کن`;
+            }
+        });
+        resetButton.addEventListener('click', resetNeuroAnimation);
+        resetNeuroAnimation();
+
+        // Animation 3: Spotlight
+        const spotlightMask = document.getElementById('spotlightMask');
+        const btnSpotlightFocused = document.getElementById('btnSpotlightFocused');
+        const btnSpotlightDistracted = document.getElementById('btnSpotlightDistracted');
+        
+        function setFocusMode(mode) {
+            if (mode === 'focused') {
+                spotlightMask.classList.remove('distracted');
+                spotlightMask.classList.add('focused');
+                btnSpotlightFocused.classList.add('active');
+                btnSpotlightDistracted.classList.remove('active');
+            } else {
+                spotlightMask.classList.remove('focused');
+                spotlightMask.classList.add('distracted');
+                btnSpotlightDistracted.classList.add('active');
+                btnSpotlightFocused.classList.remove('active');
+            }
+        }
+        // This will call the function for the spotlight animation
+        // We need to rename one of the setFocusMode functions or merge them.
+        // For simplicity, I'll rename the spotlight one.
+        const setSpotlightMode = setFocusMode;
+        // Resetting the name for the brain animation
+        const setBrainModeFunc = setBrainMode;
+        
+        // Re-attaching events with correct function names
+        btnFocused.onclick = () => setBrainModeFunc('focused');
+        btnDistracted.onclick = () => setBrainModeFunc('distracted');
+        btnSpotlightFocused.onclick = () => setSpotlightMode('focused');
+        btnSpotlightDistracted.onclick = () => setSpotlightMode('distracted');
+        
+        // Initial states
+        setBrainModeFunc('focused');
+        setSpotlightMode('focused');
+        btnSpotlightFocused.classList.add('active');
+
+
+    </script>
+
+
+</body></html>

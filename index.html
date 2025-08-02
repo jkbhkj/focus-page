@@ -107,20 +107,26 @@
         .amygdala-threat { bottom: 60px; right: 90px; background-color: var(--accent-red); }
 
         /* Focused state animations */
-        .focused-mode .pfc-command { animation: pfc-win 8s infinite ease-in-out 3s; }
-        .focused-mode .amygdala-threat { animation: amygdala-lose 8s infinite ease-in-out 1.5s; }
-        .focused-mode .stimulus { animation: stimulus-blocked 8s infinite ease-in-out; }
+        .focused-mode .pfc-command { animation: pfc-win 8s infinite ease-in-out 3s; -webkit-animation: pfc-win 8s infinite ease-in-out 3s; }
+        .focused-mode .amygdala-threat { animation: amygdala-lose 8s infinite ease-in-out 1.5s; -webkit-animation: amygdala-lose 8s infinite ease-in-out 1.5s; }
+        .focused-mode .stimulus { animation: stimulus-blocked 8s infinite ease-in-out; -webkit-animation: stimulus-blocked 8s infinite ease-in-out; }
         @keyframes pfc-win { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 40%{opacity:1;transform:translate(-180px,50px)} 41%,100%{opacity:0} }
+        @-webkit-keyframes pfc-win { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 40%{opacity:1;transform:translate(-180px,50px)} 41%,100%{opacity:0} }
         @keyframes amygdala-lose { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 20%{opacity:0;transform:translate(-90px,-55px)} 21%,100%{opacity:0} }
+        @-webkit-keyframes amygdala-lose { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 20%{opacity:0;transform:translate(-90px,-55px)} 21%,100%{opacity:0} }
         @keyframes stimulus-blocked { 0%,100%{left:20px;opacity:0} 10%{opacity:1} 40%{left:calc(50% - 120px);opacity:1} 90%{left:calc(50% - 120px);opacity:1} 95%{opacity:0} }
+        @-webkit-keyframes stimulus-blocked { 0%,100%{left:20px;opacity:0} 10%{opacity:1} 40%{left:calc(50% - 120px);opacity:1} 90%{left:calc(50% - 120px);opacity:1} 95%{opacity:0} }
 
         /* Distracted state animations */
-        .distracted-mode .pfc-command { animation: pfc-lose 8s infinite ease-in-out 3s; }
-        .distracted-mode .amygdala-threat { animation: amygdala-win 8s infinite ease-in-out 1.5s; }
-        .distracted-mode .stimulus { animation: stimulus-passed 8s infinite ease-in-out; }
+        .distracted-mode .pfc-command { animation: pfc-lose 8s infinite ease-in-out 3s; -webkit-animation: pfc-lose 8s infinite ease-in-out 3s; }
+        .distracted-mode .amygdala-threat { animation: amygdala-win 8s infinite ease-in-out 1.5s; -webkit-animation: amygdala-win 8s infinite ease-in-out 1.5s; }
+        .distracted-mode .stimulus { animation: stimulus-passed 8s infinite ease-in-out; -webkit-animation: stimulus-passed 8s infinite ease-in-out; }
         @keyframes pfc-lose { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 20%{opacity:0;transform:translate(-90px,25px)} 21%,100%{opacity:0} }
+        @-webkit-keyframes pfc-lose { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 20%{opacity:0;transform:translate(-90px,25px)} 21%,100%{opacity:0} }
         @keyframes amygdala-win { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 30%{opacity:1;transform:translate(-180px,-110px)} 31%,100%{opacity:0} }
+        @-webkit-keyframes amygdala-win { 0%,100%{opacity:0} 5%{opacity:1;transform:translate(0,0)} 30%{opacity:1;transform:translate(-180px,-110px)} 31%,100%{opacity:0} }
         @keyframes stimulus-passed { 0%,100%{left:20px;opacity:0} 10%{opacity:1} 40%{left:calc(50% - 120px);opacity:1} 60%{left:calc(50% + 50px);opacity:1} 80%{left:calc(50% + 50px);opacity:0} 95%{opacity:0} }
+        @-webkit-keyframes stimulus-passed { 0%,100%{left:20px;opacity:0} 10%{opacity:1} 40%{left:calc(50% - 120px);opacity:1} 60%{left:calc(50% + 50px);opacity:1} 80%{left:calc(50% + 50px);opacity:0} 95%{opacity:0} }
 
         /* Animation 2: Neuroplasticity */
         .neuro-diagram { position: relative; height: 150px; display: flex; align-items: center; justify-content: space-between; }
@@ -128,9 +134,10 @@
         .neuro-path.strong { height: 10px; background-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold-transparent); }
         .neuro-point { width: 50px; height: 50px; background-color: var(--bg-main); border: 2px solid var(--accent-gold); border-radius: 50%; display: grid; place-items: center; font-weight: 700; z-index: 5; }
         .neuro-signal { position: absolute; right: 50px; width: 15px; height: 15px; background: var(--accent-blue); border-radius: 50%; z-index: 6; opacity: 0; }
-        .neuro-signal.animate { animation: travel-path 4s ease-in-out; }
+        .neuro-signal.animate { animation: travel-path 4s ease-in-out; -webkit-animation: travel-path 4s ease-in-out; }
         .neuro-signal.animate.fast { animation-duration: 1.5s; }
         @keyframes travel-path { 0% { right: 50px; opacity: 1; } 100% { right: calc(100% - 65px); opacity: 1; } }
+        @-webkit-keyframes travel-path { 0% { right: 50px; opacity: 1; } 100% { right: calc(100% - 65px); opacity: 1; } }
         .reset-button { background: transparent; border: 1px solid var(--text-secondary); color: var(--text-secondary); }
         .reset-button:hover { background: var(--text-secondary); color: var(--bg-card); box-shadow: none; }
 
@@ -138,9 +145,79 @@
         .spotlight-diagram { height: 200px; position: relative; display: grid; place-items: center; }
         .spotlight-text { font-size: 1.5rem; color: #444; user-select: none; text-align: center; }
         .spotlight-mask { position: absolute; inset: 0; background: var(--bg-card); transition: all 0.8s ease-in-out; }
-        .spotlight-mask.focused { mask-image: radial-gradient(circle at center, transparent 80px, black 120px); animation: none; }
-        .spotlight-mask.distracted { animation: wander 6s infinite alternate ease-in-out; mask-image: radial-gradient(circle at center, transparent 150px, black 200px); }
-        @keyframes wander { 0% { mask-position: 20% 20%; } 25% { mask-position: 80% 50%; } 50% { mask-position: 40% 80%; } 75% { mask-position: 70% 30%; } 100% { mask-position: 20% 20%; } }
+        /*
+         * Spotlight mask styles.
+         * Safari on iOS requires vendor-prefixed `-webkit-mask-image` and
+         * `-webkit-mask-position` properties for masks and mask animations to work
+         * properly. The standard `mask-image` and `mask-position` remain for
+         * other browsers. See MDN docs for details.
+         */
+        .spotlight-mask.focused {
+            /* Mask for the focused state: center the radial gradient on the spotlight */
+            /* Define both standard and vendor-prefixed radial gradients.
+               Older versions of Safari require -webkit-radial-gradient. */
+            mask-image: radial-gradient(circle at center, transparent 80px, black 120px);
+            -webkit-mask-image: -webkit-radial-gradient(circle at center, transparent 80px, black 120px);
+            animation: none;
+            /* Safari requires -webkit-animation to override animations */
+            -webkit-animation: none;
+        }
+        .spotlight-mask.distracted {
+            /* Wandering spotlight animation in the distracted state */
+            animation: wander 6s infinite alternate ease-in-out;
+            -webkit-animation: wander 6s infinite alternate ease-in-out;
+            /* Radial gradient for the moving spotlight */
+            mask-image: radial-gradient(circle at center, transparent 150px, black 200px);
+            /* Use -webkit-radial-gradient for older Safari versions */
+            -webkit-mask-image: -webkit-radial-gradient(circle at center, transparent 150px, black 200px);
+        }
+        @keyframes wander {
+            /* Define both mask-position and -webkit-mask-position for cross‑browser support */
+            0%   { mask-position: 20% 20%;   -webkit-mask-position: 20% 20%;   }
+            25%  { mask-position: 80% 50%;   -webkit-mask-position: 80% 50%;   }
+            50%  { mask-position: 40% 80%;   -webkit-mask-position: 40% 80%;   }
+            75%  { mask-position: 70% 30%;   -webkit-mask-position: 70% 30%;   }
+            100% { mask-position: 20% 20%;   -webkit-mask-position: 20% 20%;   }
+        }
+
+        /* Safari-specific keyframe animation */
+        @-webkit-keyframes wander {
+            0%   { mask-position: 20% 20%;   -webkit-mask-position: 20% 20%;   }
+            25%  { mask-position: 80% 50%;   -webkit-mask-position: 80% 50%;   }
+            50%  { mask-position: 40% 80%;   -webkit-mask-position: 40% 80%;   }
+            75%  { mask-position: 70% 30%;   -webkit-mask-position: 70% 30%;   }
+            100% { mask-position: 20% 20%;   -webkit-mask-position: 20% 20%;   }
+        }
+
+        /*
+         * Fallback spotlight definitions for browsers that do not support CSS masks.
+         * We draw the spotlight directly in the element’s background using a
+         * radial gradient and animate the background-position instead of
+         * mask-position. Because these rules appear after the masked versions
+         * above, they will override the earlier definitions when interpreted by
+         * browsers that support the same specificity.
+         */
+        .spotlight-mask.focused {
+            background-image: radial-gradient(circle 120px at center, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.8) 120px);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: none;
+        }
+
+        .spotlight-mask.distracted {
+            background-image: radial-gradient(circle 200px at center, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.8) 200px);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: wanderBG 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes wanderBG {
+            0%   { background-position: 20% 20%; }
+            25%  { background-position: 80% 50%; }
+            50%  { background-position: 40% 80%; }
+            75%  { background-position: 70% 30%; }
+            100% { background-position: 20% 20%; }
+        }
         
         @media (max-width: 768px) {
             body { padding: 20px 10px; }
